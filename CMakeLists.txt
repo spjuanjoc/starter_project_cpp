@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.10)
 
-project(intro)
+project(starter_cpp CXX)
 
 set(CMAKE_CXX_STANDARD 17)
 
@@ -9,7 +9,8 @@ option(ENABLE_TESTS "Enable googletest" OFF)
 if(MSVC)
   add_compile_options(/W4)
 else()
-  add_compile_options(-Wall -Wextra -Wpedantic)
+  message("GCC")
+  add_compile_options(-Wall -Wextra -Wpedantic -Wconversion) #[[-Wlifetime]]
 endif()
 
 set(SOURCES
@@ -39,4 +40,4 @@ if (ENABLE_TESTS)
   target_link_libraries(${PROJECT_NAME} gtest gmock )
 endif ()
 
-target_compile_features(intro PRIVATE cxx_lambda_init_captures)
+target_compile_features(starter_cpp PRIVATE cxx_lambda_init_captures)
