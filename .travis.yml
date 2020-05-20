@@ -1,0 +1,7 @@
+dist: bionic
+sudo: false
+language: cpp
+
+script: 
+  - cmake .
+  - cmake --build . -- -j2
