@@ -11,6 +11,7 @@ if(MSVC)
 else()
   message("GCC")
   add_compile_options(-Wall -Wextra -Wpedantic -Wconversion) #[[-Wlifetime]]
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pthread ")
 endif()
 
 set(SOURCES
@@ -22,15 +23,17 @@ set(SOURCES
 include_directories(Module)
 
 if (ENABLE_TESTS)
-  set(SOURCES
-          ${SOURCES}
-          test/Module.cpp
-      )
+  #  set(SOURCES
+  #          ${SOURCES}
+  #          test/Module.cpp
+  #      )
 
   include_directories(test/Module)
-  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pthread ")
+
   add_definitions(-DGTEST_LANGUAGE_CXX11)
   enable_testing()
+  add_executable(tester test/Module)
+  add_test(Tester tester)
 endif ()
 
 add_executable(${PROJECT_NAME} ${SOURCES})
