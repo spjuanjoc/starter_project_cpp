@@ -3,6 +3,6 @@ sudo: false
 language: cpp
 
 script: 
-  - cmake ENABLE_TESTS=true .
+  - cmake -DENABLE_TESTS=true .
   - cmake --build . -- -j2
   - ctest -j2
