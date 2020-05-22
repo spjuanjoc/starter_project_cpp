@@ -7,6 +7,6 @@ build_script:
 
   cd build
 
-  cmake -DENABLE_TESTS=true c:\project\source -G "Visual Studio 15"
+  cmake c:\project\source -G "Visual Studio 15" -DENABLE_TESTS=true
 
-  cmake --build . -- config "Debug"
+  cmake --build . --config "Debug"
