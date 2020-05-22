@@ -4,6 +4,9 @@ clone_folder: c:\project\source
 build_script:
 - cmd: >-
   mkdir build
+
   cd build
+
   cmake -DENABLE_TESTS=true c:\project\source -G "Visual Studio 15"
+
   cmake --build . -- config "Debug"
