@@ -30,7 +30,7 @@ if (ENABLE_TESTS)
 
   include_directories(test/Module)
 
-  add_definitions(-DGTEST_LANGUAGE_CXX11)
+  #  add_definitions(-DGTEST_LANGUAGE_CXX11)
   enable_testing()
   add_executable(tester test/Module)
   add_test(Tester tester)
@@ -38,9 +38,9 @@ endif ()
 
 add_executable(${PROJECT_NAME} ${SOURCES})
 
-if (ENABLE_TESTS)
-  # Link googletest with the current project
-  target_link_libraries(${PROJECT_NAME} gtest gmock )
-endif ()
+#if (ENABLE_TESTS)
+#  # Link googletest with the current project
+#  #target_link_libraries(${PROJECT_NAME} gtest gmock )
+#endif ()
 
-target_compile_features(starter_cpp PRIVATE cxx_lambda_init_captures)
+#target_compile_features(starter_cpp PRIVATE cxx_lambda_init_captures)
