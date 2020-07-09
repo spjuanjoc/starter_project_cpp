@@ -36,8 +36,8 @@ elseif (${CMAKE_SYSTEM_NAME} MATCHES "Darwin") # .mm .h
     set(PLATFORM_EXTENSION mm)
 endif ()
 
-set(SOURCES ${SOURCES}
-        src/Foo/Foo.${PLATFORM_EXTENSION})
+#set(SOURCES ${SOURCES}
+#        src/Foo/Foo.${PLATFORM_EXTENSION})
 
 message("Platform: ${CMAKE_SYSTEM_NAME}")
 
