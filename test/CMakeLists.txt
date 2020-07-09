@@ -1,5 +1,6 @@
 
 set(TEST_SOURCES
+    Foo/TestFoo.cpp
 )
 
 set(TEST_NAME TestFoo)
