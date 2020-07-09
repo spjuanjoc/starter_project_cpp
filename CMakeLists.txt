@@ -4,50 +4,43 @@ project(starter_cpp VERSION 0.0.1 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 17)
 
-option(ENABLE_TESTS "Enable googletest" OFF)
+# Options
+option(ENABLE_TESTS "Enable tests" ON)
 
-## \todo Add optimization flags
-## \todo Replace compiler identification
-if (CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
-    message("using Clang")
-elseif (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
-    # using GCC
-#    set(${CMAKE_CXX_COMPILER} "g++")
-    add_compile_options(-O3)
-    add_compile_options(-Wall -Wextra -Wpedantic -Wconversion)
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pthread ")
-elseif (CMAKE_CXX_COMPILER_ID STREQUAL "Intel")
-    message("using Intel C++")
-elseif (CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
-    message("using Visual Studio C++")
-    add_compile_options(/W4)
-endif ()
-message("Compiler: ${CMAKE_CXX_COMPILER}")
-message("Compiler ID: ${CMAKE_CXX_COMPILER_ID}")
+# Link to use the warnings specified in CompilerWarnings.cmake
+add_library(project_options INTERFACE)
+# standard compiler warnings
+include(cmake/CompilerOptions.cmake)
+set_project_options(project_options)
 
-#
+
+# Sources common for all platforms
+# .cpp .hpp
 set(SOURCES
-        main.cpp
-        # other.cpp
+        src/main.cpp
+        # src/other.cpp
         )
 
-# To get the headers
+# Get the headers
 include_directories(PUBLIC include)
 
+# setup file extensions for platform specific sources: Linux, Windows, and Apple (Darwin)
+if (${CMAKE_SYSTEM_NAME} MATCHES "Linux") # .cc .hh
+    set(PLATFORM_EXTENSION cc)
+elseif (${CMAKE_SYSTEM_NAME} MATCHES "Windows") # .cxx .hxx
+    set(PLATFORM_EXTENSION cxx)
+elseif (${CMAKE_SYSTEM_NAME} MATCHES "Darwin") # .mm .h
+    set(PLATFORM_EXTENSION mm)
+endif ()
+
+set(SOURCES ${SOURCES}
+        )
+
+message("Platform: ${CMAKE_SYSTEM_NAME}")
+
 if (ENABLE_TESTS)
-    #  set(SOURCES
-    #          ${SOURCES}
-    #          test/Module.cpp
-    #      )
-
-    include_directories(test/Module)
-
-    #  add_definitions(-DGTEST_LANGUAGE_CXX11)
     enable_testing()
-    add_executable(tester test/Module)
-    add_test(Tester tester)
-#  # Link googletest with the current project
-#  #target_link_libraries(${PROJECT_NAME} gtest gmock )
+    add_subdirectory(test)
 endif ()
 
 add_executable(${PROJECT_NAME} ${SOURCES})
