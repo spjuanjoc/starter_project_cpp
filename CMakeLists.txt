@@ -23,7 +23,9 @@ set(SOURCES
         )
 
 # Get the headers
-include_directories(PUBLIC include)
+include_directories(PUBLIC
+        include
+        include/Foo)
 
 # setup file extensions for platform specific sources: Linux, Windows, and Apple (Darwin)
 if (${CMAKE_SYSTEM_NAME} MATCHES "Linux") # .cc .hh
