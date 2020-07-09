@@ -8,14 +8,10 @@
 // Apple only
 
 #include "IFoo.hpp"
-#include <cstdio>
 
 struct Foo : IFoo
 {
-  void doSomething() override
-  {
-    puts("Do something from apple");
-  }
+  void doSomething() override;
 };
 
 #endif  //STARTER_CPP_FOO_H
