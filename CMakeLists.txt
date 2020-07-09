@@ -29,9 +29,9 @@ include_directories(PUBLIC
 
 # setup file extensions for platform specific sources: Linux, Windows, and Apple (Darwin)
 if (${CMAKE_SYSTEM_NAME} MATCHES "Linux") # .cc .hh
-    set(PLATFORM_EXTENSION cxx)
-elseif (${CMAKE_SYSTEM_NAME} MATCHES "Windows") # .cxx .hxx
     set(PLATFORM_EXTENSION cc)
+elseif (${CMAKE_SYSTEM_NAME} MATCHES "Windows") # .cxx .hxx
+    set(PLATFORM_EXTENSION cxx)
 elseif (${CMAKE_SYSTEM_NAME} MATCHES "Darwin") # .mm .h
     set(PLATFORM_EXTENSION mm)
 endif ()
