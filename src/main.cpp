@@ -1,6 +1,13 @@
+#include "Foo/Foo.hpp"
 #include <functional>
 #include <iostream>
 #include <map>
+
+void foo()
+{
+  Foo f;
+  f.runDoSomething();
+}
 
 int main()
 {
@@ -13,4 +20,5 @@ int main()
   {
     std::cout << "Key: " << key << " Value: " << value << "\n";
   }
+  foo();
 }

@@ -5,7 +5,7 @@ project(starter_cpp VERSION 0.0.1 LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 17)
 
 # Options
-option(ENABLE_TESTS "Enable tests" ON)
+option(ENABLE_TESTS "Enable tests" OFF)
 
 # Link to use the warnings specified in CompilerWarnings.cmake
 add_library(project_options INTERFACE)
@@ -18,6 +18,7 @@ set_project_options(project_options)
 # .cpp .hpp
 set(SOURCES
         src/main.cpp
+        src/Foo/Foo.cpp
         # src/other.cpp
         )
 
@@ -34,7 +35,7 @@ elseif (${CMAKE_SYSTEM_NAME} MATCHES "Darwin") # .mm .h
 endif ()
 
 set(SOURCES ${SOURCES}
-        )
+        src/Foo/Foo.${PLATFORM_EXTENSION})
 
 message("Platform: ${CMAKE_SYSTEM_NAME}")
 
