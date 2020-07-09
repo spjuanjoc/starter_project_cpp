@@ -41,7 +41,9 @@ Makefile
 /build
 
 # cmake files
-*.cmake
+#*.cmake
+# exclude configuration from ignore
+#!/cmake/CompilerOptions.cmake
 
 # DEB packages
 *.deb
