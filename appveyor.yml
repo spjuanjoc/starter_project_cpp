@@ -7,7 +7,7 @@ build_script:
 
     cd build
 
-    cmake c:\projects\source -G "Visual Studio 16 2019" -DENABLE_TESTS=false
+    cmake c:\projects\source -G "Visual Studio 16 2019" -DENABLE_TESTS=true
 
     cmake --build . --config "Debug"
 
