@@ -1,5 +1,8 @@
 language: cpp
 
+install:
+  - pip install --user ninja
+
 jobs:
   include:
     - os: osx
@@ -16,3 +19,8 @@ script:
   - cmake --build . -- -j2
   - ctest -j2
   - ./starter_cpp
+  - whereis ninja
+
+# TODO install Ninja
+#     - cmake ../ -DENABLE_TESTS=true -G"Ninja"
+#     - ninja -j4
