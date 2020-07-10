@@ -23,21 +23,27 @@ set(SOURCES
         )
 
 # Get the headers
-include_directories(PUBLIC
+set(INCLUDES
         include
         include/Foo)
+include_directories(PUBLIC ${INCLUDES})
+#target_include_directories(${PROJECT_NAME} PUBLIC ${INCLUDES})
 
 # setup file extensions for platform specific sources: Linux, Windows, and Apple (Darwin)
 if (${CMAKE_SYSTEM_NAME} MATCHES "Linux") # .cc .hh
     set(PLATFORM_EXTENSION cc)
 elseif (${CMAKE_SYSTEM_NAME} MATCHES "Windows") # .cxx .hxx
     set(PLATFORM_EXTENSION cxx)
+    set(SOURCES ${SOURCES}
+            include/Foo/Foo.hpp
+            include/Foo/Foo.hxx
+            )
 elseif (${CMAKE_SYSTEM_NAME} MATCHES "Darwin") # .mm .h
     set(PLATFORM_EXTENSION mm)
 endif ()
 
-#set(SOURCES ${SOURCES}
-#        src/Foo/Foo.${PLATFORM_EXTENSION})
+set(SOURCES ${SOURCES}
+        src/Foo/Foo.${PLATFORM_EXTENSION})
 
 message("Platform: ${CMAKE_SYSTEM_NAME}")
 
