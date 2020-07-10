@@ -51,6 +51,8 @@ message("Platform: ${CMAKE_SYSTEM_NAME}")
 if (ENABLE_TESTS)
     enable_testing()
     add_subdirectory(test)
+elseif()
+    message("Tests not included")
 endif ()
 
 add_executable(${PROJECT_NAME} ${SOURCES})
