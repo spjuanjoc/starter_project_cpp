@@ -1,4 +1,4 @@
-#include "Foo/Foo.h"
+#include "Foo/Foo.hpp"
 #include <cstdio>
 
 void Foo::doSomething()

@@ -5,8 +5,9 @@
 
 void foo()
 {
-  Foo f;
-  f.runDoSomething();
+  Bar b{};
+  Foo f{};
+  b.runDoSomething(f);
 }
 
 int main()

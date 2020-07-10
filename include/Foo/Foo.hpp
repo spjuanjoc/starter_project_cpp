@@ -11,10 +11,15 @@
 
 struct Foo : IFoo
 {
-  void runDoSomething();
-
-protected:
   void doSomething() override;
+  ~Foo() override = default;
+};
+
+struct Bar
+{
+//  IFoo& _iFoo;
+  bool _done;
+  bool runDoSomething(IFoo& iFoo);
 };
 
 #endif  //STARTER_CPP_FOO_HPP

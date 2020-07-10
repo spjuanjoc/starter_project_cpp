@@ -34,11 +34,6 @@ if (${CMAKE_SYSTEM_NAME} MATCHES "Linux") # .cc .hh
     set(PLATFORM_EXTENSION cc)
 elseif (${CMAKE_SYSTEM_NAME} MATCHES "Windows") # .cxx .hxx
     set(PLATFORM_EXTENSION cxx)
-    # Seems like MSVC doesn't autofind the headers
-    set(SOURCES ${SOURCES}
-            include/Foo/Foo.hpp
-            include/Foo/Foo.hxx
-            )
 elseif (${CMAKE_SYSTEM_NAME} MATCHES "Darwin") # .mm .h
     set(PLATFORM_EXTENSION mm)
 endif ()
