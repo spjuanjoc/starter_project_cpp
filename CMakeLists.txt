@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.15)
+cmake_minimum_required(VERSION 3.10)
 
 project(starter_cpp VERSION 0.0.1 LANGUAGES CXX)
 
@@ -52,12 +52,12 @@ set_project_options(${PROJECT_NAME})
 if(ENABLE_PCH)
   # Since CMake 3.15
   target_precompile_headers(${PROJECT_NAME} INTERFACE <vector> <string> <map> <utility>)
+  message("PCH enabled")
 endif()
 
 if(ENABLE_TESTS)
   enable_testing()
   add_subdirectory(test)
-  message("test sources: ${TEST_SOURCES}")
 elseif()
   message("Tests not included")
 endif()
