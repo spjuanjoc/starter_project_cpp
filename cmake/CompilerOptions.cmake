@@ -3,8 +3,8 @@
 # https://github.com/lefticus/cppbestpractices/blob/master/02-Use_the_Tools_Available.md
 
 function(set_project_options project_options_name)
-  option(WARNINGS_AS_ERRORS "Treat compiler warnings as errors" OFF)
-  option(ENABLE_COVERAGE "Enable gcov coverage" OFF)
+  option(ENABLE_WARN_AS_ERR "Enable treat compiler warnings as errors" OFF)
+  option(ENABLE_COVERAGE    "Enable gcov coverage" OFF)
 
   set(MSVC_WARNINGS
       /W4     # Baseline reasonable warnings
@@ -50,7 +50,7 @@ function(set_project_options project_options_name)
       -Wformat=2 # warn on security issues around functions that format output (ie printf)
   )
 
-  if(WARNINGS_AS_ERRORS)
+  if(ENABLE_WARN_AS_ERR)
     set(CLANG_WARNINGS ${CLANG_WARNINGS} -Werror)
     set(MSVC_WARNINGS ${MSVC_WARNINGS} /WX)
   endif()
