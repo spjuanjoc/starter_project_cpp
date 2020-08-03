@@ -12,8 +12,10 @@ void foo()
 
 int main()
 {
+  // weird lambda
   [out = std::ref(std::cout << "Hello ")]() { out.get() << "World\n"; }();
 
+  // string view
   std::map<std::uint32_t, std::string_view> m{{1, "one"}, {2, "two"}, {3, "three"}};
 
   //Structured binding
