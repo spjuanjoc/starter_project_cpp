@@ -17,9 +17,11 @@ struct Foo : IFoo
 
 struct Bar
 {
-//  IFoo& _iFoo;
-  bool _done;
-  bool runDoSomething(IFoo& iFoo);
+  IFoo& _iFoo;
+  bool _done{};
+
+  explicit Bar(IFoo& iFoo);
+  bool runDoSomething();
 };
 
 #endif  //STARTER_CPP_FOO_HPP

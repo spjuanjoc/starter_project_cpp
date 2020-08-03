@@ -1,8 +1,12 @@
 #include "Foo/Foo.hpp"
 
-bool Bar::runDoSomething(IFoo& iFoo)
+bool Bar::runDoSomething()
 {
-  iFoo.doSomething();
+  _iFoo.doSomething();
   _done = true;
   return true;
+}
+
+Bar::Bar(IFoo& iFoo) : _iFoo(iFoo)
+{
 }
