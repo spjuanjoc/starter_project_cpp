@@ -2,8 +2,9 @@
 #
 # https://github.com/lefticus/cppbestpractices/blob/master/02-Use_the_Tools_Available.md
 
-function(set_project_options project_name)
+function(set_project_options project_options_name)
   option(WARNINGS_AS_ERRORS "Treat compiler warnings as errors" OFF)
+  option(ENABLE_COVERAGE "Enable gcov coverage" OFF)
 
   set(MSVC_WARNINGS
       /W4     # Baseline reasonable warnings
@@ -69,12 +70,15 @@ function(set_project_options project_name)
     set(PROJECT_WARNINGS ${CLANG_WARNINGS})
   elseif(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
     set(PROJECT_WARNINGS ${GCC_WARNINGS})
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pthread ")
+    if(ENABLE_COVERAGE)
+      message("Using gcov")
+      set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fprofile-arcs -ftest-coverage -pthread ")
+    endif()
   else()
     message(AUTHOR_WARNING "No compiler warnings set for '${CMAKE_CXX_COMPILER_ID}' compiler.")
   endif()
 
-  target_compile_options(${project_name} INTERFACE ${PROJECT_WARNINGS})
+  target_compile_options(${project_options_name} INTERFACE ${PROJECT_WARNINGS})
 
   message("Warnings included: ${PROJECT_WARNINGS}")
   message("Compiler: ${CMAKE_CXX_COMPILER}")
