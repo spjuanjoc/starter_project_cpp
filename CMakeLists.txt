@@ -44,7 +44,7 @@ set(INCLUDES include include/Foo)
 include_directories(PUBLIC ${INCLUDES})
 target_include_directories(${PROJECT_NAME} PUBLIC ${INCLUDES})
 
-# Compiler options
+# Compiler options target_compile_options()
 include(cmake/CompilerOptions.cmake)
 set_project_options(${PROJECT_NAME})
 
